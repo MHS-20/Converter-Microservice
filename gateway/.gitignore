@@ -1,0 +1,22 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# Virtual environment directories
+bin/
+include/
+lib/
+lib64/
+pyvenv.cfg
+lib64
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Allow source code files
+!*.py
+!*.txt
+!*.yml
+!*.yaml
+!*.md
+!Dockerfile
+!manifests/
