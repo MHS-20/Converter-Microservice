@@ -24,11 +24,31 @@ Video to MP3 converter microservice
 6. The client uses the id in the email to retrive the mp3 through the gateway
 
 <br/>
-<img src="./architetcture.png" alt="Architecture">
+<img src="./architetcture.png" alt="Architecture" width="500"/>
 
 
 ### Kubernetes Cluster Configuration
 Auth Service: 
 - Deployment
-- Config Map
-- Secrets
+- ConfigMap
+- Secret
+- Service
+
+Gateway: 
+- Deployment
+- Service
+- Ingress
+- ConfigMap
+- Secret
+
+RabbitMQ:
+- StatefulSet
+- Service
+- Ingress
+- Volume claim
+
+Converter Service:
+- Deployment
+- ConfigMap
+- Secret
+- Service
