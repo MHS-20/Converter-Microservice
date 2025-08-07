@@ -1,17 +1,17 @@
 import pika, json, tempfile, os
-from bson.objectid import ObjectID
+from bson.objectid import ObjectId
 import moviepy.editor 
 
 def start(message, fs_videos, fs_mp3s, channel):
      message = json.loads(message)
 
      tf = tempfile.NamedTemporaryFile()
-     out = fs_videos.get(ObjectID(message["video_fid"]))
+     out = fs_videos.get(ObjectId(message["video_fid"]))
      tf.write(out.read())
      audio = moviepy.editor.VideoFileClip(tf.name).audio
      tf.close()
 
-     tf_path = tempfile.gettempdir() + f"/{message["video_fid"]}.mp3"
+     tf_path = tempfile.gettempdir() + f"/{message['video_fid']}.mp3"
      audio.write_audiofile(tf_path)
 
      f = open(tf_path, "rb")
