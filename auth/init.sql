@@ -1,8 +1,15 @@
-CREATE USER 'auth_user'@'localhost' IDENTIFIED BY 'auth';
+DROP USER IF EXISTS 'auth_user'@'localhost';
+DROP USER IF EXISTS 'auth_user'@'%';
+DROP USER IF EXISTS 'auth_user'@'mp3converter.com';
 
-CREATE DATABASE auth; 
+CREATE USER 'auth_user'@'%' IDENTIFIED BY 'auth';
+GRANT ALL PRIVILEGES ON auth.* TO 'auth_user'@'%';
 
-GRANT ALL PRIVILEGES ON auth.* TO 'auth_user'@'localhost';
+-- Specificamente per l'host mp3converter.com
+CREATE USER 'auth_user'@'mp3converter.com' IDENTIFIED BY 'auth';
+GRANT ALL PRIVILEGES ON auth.* TO 'auth_user'@'mp3converter.com';
+
+-- CREATE DATABASE auth; 
 
 USE auth;
 
