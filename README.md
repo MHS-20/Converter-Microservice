@@ -42,14 +42,28 @@ Gateway:
 - ConfigMap
 - Secret
 
+Converter Service:
+- Deployment
+- ConfigMap
+- Secret
+- Service
+
 RabbitMQ:
 - StatefulSet
 - Service
 - Ingress
 - Volume claim
 
-Converter Service:
-- Deployment
-- ConfigMap
-- Secret
+MySQL:
+- StatefulSet
 - Service
+- Configmap
+- Secret 
+- Volume claim
+
+MongoDB: 
+- StatefulSet
+- Service
+- Configmap
+- Secret 
+- Volume claim
