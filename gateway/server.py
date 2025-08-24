@@ -8,7 +8,7 @@ from bson.objectid import ObjectId
 
 server = Flask(__name__)
 
-mongo_video = PyMongo(server, uri="mongodb://mp3_user:mp3_password@mongodb:27017/videos")
+mongo_video = PyMongo(server, uri="mongodb://video_user:video_password@mongodb:27017/videos")
 mongo_mp3 = PyMongo(server, uri="mongodb://mp3_user:mp3_password@mongodb:27017/mp3s")
 
 fs_videos = gridfs.GridFS(mongo_video.db)
@@ -64,7 +64,7 @@ def download():
             return send_file(out, download_name=fid_string + ".mp3")
         except Exception as err: 
             print(err)
-            return "internal server error", 500
+            return "internal server error 3", 500
 
     
     return "not authorized", 401

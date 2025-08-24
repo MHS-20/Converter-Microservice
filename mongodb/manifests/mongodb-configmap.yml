@@ -4,13 +4,16 @@ metadata:
   name: mongodb-init-script
 data:
   init.js: |
-    // Crea il database e l'utente per l'applicazione
-    db = db.getSiblingDB('mp3s');
-    
+    // Crea database per videos
+    db = db.getSiblingDB('videos');
     db.createUser({
-      user: 'mp3_user',
-      pwd: 'mp3_password',
+      user: 'video_user',
+      pwd: 'video_password',
       roles: [
+        {
+          role: 'readWrite',
+          db: 'videos'
+        },
         {
           role: 'readWrite',
           db: 'mp3s'
@@ -18,7 +21,28 @@ data:
       ]
     });
     
-    // Crea le collezioni se necessario
+    // Crea le collezioni GridFS per videos
+    db.createCollection('fs.files');
+    db.createCollection('fs.chunks');
+    
+    // Crea database per mp3s
+    db = db.getSiblingDB('mp3s');
+    db.createUser({
+      user: 'mp3_user',
+      pwd: 'mp3_password',
+      roles: [
+        {
+          role: 'readWrite',
+          db: 'videos'
+        },
+        {
+          role: 'readWrite',
+          db: 'mp3s'
+        }
+      ]
+    });
+    
+    // Crea le collezioni GridFS per mp3s
     db.createCollection('fs.files');
     db.createCollection('fs.chunks');
     
