@@ -10,6 +10,15 @@ def main ():
     db_videos = client.videos
     db_mp3s = client.mp3s
 
+    # mongo_videos_uri = os.environ.get("MONGO_VIDEOS_URI")
+    # mongo_mp3s_uri = os.environ.get("MONGO_MP3S_URI")
+
+    # client_videos = MongoClient(mongo_videos_uri)
+    # client_mp3s = MongoClient(mongo_mp3s_uri)
+    
+    # db_videos = client_videos.videos
+    # db_mp3s = client_mp3s.mp3s
+
     fs_videos = gridfs.GridFS(db_videos)
     fs_mp3s = gridfs.GridFS(db_mp3s)
 

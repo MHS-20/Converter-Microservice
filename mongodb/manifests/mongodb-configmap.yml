@@ -6,6 +6,7 @@ data:
   init.js: |
     // Crea database per videos
     db = db.getSiblingDB('videos');
+
     db.createUser({
       user: 'video_user',
       pwd: 'video_password',
@@ -45,5 +46,5 @@ data:
     // Crea le collezioni GridFS per mp3s
     db.createCollection('fs.files');
     db.createCollection('fs.chunks');
-    
+
     print('MongoDB initialization completed');
