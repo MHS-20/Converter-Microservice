@@ -69,7 +69,11 @@ MongoDB:
 - Volume claim
 
 ### How to run 
+```
 minikube enable ingress
 minikube start
-kubectl apply -f . 
-NOTE: delete the PVC of mongo statefulset to rexecute the init script
+kubectl apply -f auth/manifests/ converter/manifests/ gateway/manifests/ rabbitmq/manifests/ mongodb/manifests/ mysql/manifests/ notification/manifests/
+```
+Then go to `http://rabbitmq-manager.com` and create two classic durable queues: `mp3` and `videos`
+
+NOTE: delete the PVC of mongo statefulset if needed to reexecute the init script
