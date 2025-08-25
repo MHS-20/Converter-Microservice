@@ -3,4 +3,27 @@ kind: ConfigMap
 metadata:
   name: rabbitmq-configmap
 data: 
-  PLACEHOLDER: "none"
+  definitions.json: |
+    {
+      "vhosts": [
+        { "name": "/" }
+      ],
+      "queues": [
+        {
+          "name": "queue1",
+          "vhost": "/",
+          "durable": true,
+          "arguments": {
+            "x-queue-type": "classic"
+          }
+        },
+        {
+          "name": "queue2",
+          "vhost": "/",
+          "durable": true,
+          "arguments": {
+            "x-queue-type": "classic"
+          }
+        }
+      ]
+    }

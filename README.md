@@ -67,3 +67,9 @@ MongoDB:
 - Configmap
 - Secret 
 - Volume claim
+
+### How to run 
+minikube enable ingress
+minikube start
+kubectl apply -f . 
+NOTE: delete the PVC of mongo statefulset to rexecute the init script
